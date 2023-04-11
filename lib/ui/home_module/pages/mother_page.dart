@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../provider/page_index_provider.dart';
 import '../widgets/bottom_nav.dart';
 import 'analytics_page.dart';
+import 'profile_page.dart';
 
 class MotherHomePage extends ConsumerWidget {
   const MotherHomePage({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class MotherHomePage extends ConsumerWidget {
     AnalyticsPage(),
     Scaffold(),
     Scaffold(),
-    Scaffold(),
+    ProfilePage(),
   ];
 
   @override

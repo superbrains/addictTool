@@ -19,4 +19,5 @@ class AssetPath {
   static const facebook = '$_imagePath/facebook.png';
   static const whatsapp = '$_imagePath/whatsapp.png';
   static const slack = '$_imagePath/slack.png';
+  static const me = '$_imagePath/me.png';
 }
