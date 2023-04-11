@@ -1,9 +1,10 @@
 import 'package:addict_tool/ui/route_names.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  runApp(const AddictToolApp());
+  runApp(const ProviderScope(child: AddictToolApp()));
 }
 
 class AddictToolApp extends StatelessWidget {

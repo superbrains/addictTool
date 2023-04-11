@@ -11,4 +11,8 @@ class AssetPath {
   static const eyeCloseSvg = '$_svgPath/eye-close.svg';
   static const facebookSvg = '$_svgPath/facebook.svg';
   static const googleSvg = '$_svgPath/google.svg';
+  static const analyticsSvg = '$_svgPath/analytics.svg';
+  static const chatSvg = '$_svgPath/chat.svg';
+  static const homeSvg = '$_svgPath/home.svg';
+  static const userSvg = '$_svgPath/user.svg';
 }

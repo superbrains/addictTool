@@ -1,3 +1,4 @@
+import 'package:addict_tool/ui/home_module/pages/mother_page.dart';
 import 'package:addict_tool/ui/onboarding/pages/login_page.dart';
 import 'package:addict_tool/ui/onboarding/pages/signup_page.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,17 @@ class RouteNames {
   static const String onboardingScreen = 'onboardingPageView';
   static const String signUpPage = 'signUpPage';
   static const String loginPage = 'loginPage';
+  static const String motherPage = 'motherPage';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     ///Named routes to be added here in this format
     ///RouteNames.splashScreen: (context) => SplashScreen(),
+    //MotherHomePage
     splashScreen: (context) => const SplashScreen(),
     onboardingScreen: (context) => const OnboardingPageView(),
     signUpPage: (_) => const SignUpPage(),
-    loginPage: (_) => const LoginPage()
+    loginPage: (_) => const LoginPage(),
+    motherPage: (_) => const MotherHomePage()
   };
 
   static Route<dynamic> generateRoute(RouteSettings settings) {

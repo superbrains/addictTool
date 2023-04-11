@@ -36,7 +36,12 @@ class LoginPage extends HookWidget {
                     title: 'Password',
                     child: PasswordField(controller: password)),
                 const SizedBox(height: 20),
-                AppElevatedButton(onPressed: () {}, label: 'Sign in'),
+                AppElevatedButton(
+                    onPressed: () {
+                      context.pushNamedAndRemoveUntil(
+                          RouteNames.motherPage, (route) => false);
+                    },
+                    label: 'Sign in'),
                 const SizedBox(height: 20),
                 const SocialButtonWidget(),
                 const SizedBox(height: 30),
