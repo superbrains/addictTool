@@ -10,6 +10,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../shared/password_field.dart';
 import '../../shared/social_media_button_widget.dart';
+import '../widgets/onboard_header.dart';
 
 class SignUpPage extends HookWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -23,45 +24,61 @@ class SignUpPage extends HookWidget {
     final confirmPassword = useTextEditingController();
 
     return Scaffold(
-      body: PaddedContainer(
-        child: Column(
-          children: [
-            AppInputField(title: 'Name', child: TextField(controller: name)),
-            const SizedBox(height: 20),
-            AppInputField(
-                title: 'Phone Number', child: TextField(controller: phone)),
-            const SizedBox(height: 20),
-            AppInputField(title: 'Email', child: TextField(controller: email)),
-            const SizedBox(height: 20),
-            AppInputField(
-                title: 'Password', child: PasswordField(controller: password)),
-            const SizedBox(height: 20),
-            AppInputField(
-                title: 'Confirm Password',
-                child: PasswordField(controller: confirmPassword)),
-            const SizedBox(height: 20),
-            AppElevatedButton(onPressed: () {}, label: 'Sign up'),
-            const SizedBox(height: 20),
-            const SocialButtonWidget(),
-            const SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Have an account? ',
-                  style: AppTextStyle.fontWeight400(color: AppColor.textColor1),
+      body: Column(
+        children: [
+          const OnboardHeaderWidget(
+            title: 'Create an account',
+          ),
+          Expanded(
+            child: PaddedContainer(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    AppInputField(
+                        title: 'Name', child: TextField(controller: name)),
+                    const SizedBox(height: 20),
+                    AppInputField(
+                        title: 'Phone Number',
+                        child: TextField(controller: phone)),
+                    const SizedBox(height: 20),
+                    AppInputField(
+                        title: 'Email', child: TextField(controller: email)),
+                    const SizedBox(height: 20),
+                    AppInputField(
+                        title: 'Password',
+                        child: PasswordField(controller: password)),
+                    const SizedBox(height: 20),
+                    AppInputField(
+                        title: 'Confirm Password',
+                        child: PasswordField(controller: confirmPassword)),
+                    const SizedBox(height: 20),
+                    AppElevatedButton(onPressed: () {}, label: 'Sign up'),
+                    const SizedBox(height: 20),
+                    const SocialButtonWidget(),
+                    const SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Have an account? ',
+                          style: AppTextStyle.fontWeight400(
+                              color: AppColor.textColor1),
+                        ),
+                        CupertinoButton(
+                          onPressed: () {
+                            context.pushReplacementNamed(RouteNames.loginPage);
+                          },
+                          padding: EdgeInsets.zero,
+                          child: const Text('Sign in'),
+                        )
+                      ],
+                    )
+                  ],
                 ),
-                CupertinoButton(
-                  onPressed: () {
-                    context.pushReplacementNamed(RouteNames.loginPage);
-                  },
-                  padding: EdgeInsets.zero,
-                  child: const Text('Sign in'),
-                )
-              ],
-            )
-          ],
-        ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
