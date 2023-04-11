@@ -9,4 +9,5 @@ class AppColor {
   static const inputFillColor = Color(0xffF8F7FA);
   static const inputBorderColor = Color(0xffABBBF2);
   static const textColor1 = Color(0xff707071);
+  static const cardBackground = Color(0xffF4F5F7);
 }

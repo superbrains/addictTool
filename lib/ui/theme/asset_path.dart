@@ -15,4 +15,8 @@ class AssetPath {
   static const chatSvg = '$_svgPath/chat.svg';
   static const homeSvg = '$_svgPath/home.svg';
   static const userSvg = '$_svgPath/user.svg';
+  static const totalTime = '$_imagePath/total-time.png';
+  static const facebook = '$_imagePath/facebook.png';
+  static const whatsapp = '$_imagePath/whatsapp.png';
+  static const slack = '$_imagePath/slack.png';
 }

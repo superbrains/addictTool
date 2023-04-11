@@ -35,6 +35,10 @@ ThemeData _buildLightTheme() {
         style: TextButton.styleFrom(
       padding: EdgeInsets.zero,
     )),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: primaryColor,
+        foregroundColor: AppColor.white,
+        iconSize: 32),
     inputDecorationTheme: InputDecorationTheme(
         constraints: const BoxConstraints(
           minHeight: 50,

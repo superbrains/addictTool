@@ -2,6 +2,8 @@ import 'package:addict_tool/ui/shared/padded_container.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/app_elaspe_time_widget.dart';
+
 class AnalyticsPage extends StatelessWidget {
   const AnalyticsPage({Key? key}) : super(key: key);
 
@@ -20,8 +22,26 @@ class AnalyticsPage extends StatelessWidget {
             Text('Manage your time well',
                 style: AppTextStyle.fontWeight500(
                     color: AppColor.secondaryAddict)),
+            const SizedBox(height: 14),
+            Image.asset(AssetPath.totalTime, width: double.maxFinite),
+            Expanded(
+                child: ListView(
+              children: [
+                const SizedBox(height: 20),
+                ...sampleApps.map((e) => Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: AppElapseTimeWidget(
+                        app: e,
+                      ),
+                    ))
+              ],
+            ))
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }

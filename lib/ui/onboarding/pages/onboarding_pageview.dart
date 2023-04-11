@@ -45,7 +45,7 @@ class OnboardingPageView extends HookWidget {
             width: 245,
             child: ElevatedButton(
                 onPressed: () {
-                  context.pushNamed(RouteNames.signUpPage);
+                  context.pushNamed(RouteNames.loginPage);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

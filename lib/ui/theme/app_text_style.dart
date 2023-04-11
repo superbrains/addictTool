@@ -25,4 +25,17 @@ class AppTextStyle {
         color: color,
         fontStyle: FontStyle.normal,
       );
+
+  static TextStyle fontWeight700(
+          {double fontSize = 14,
+          double height = 23 / 18,
+          Color color = AppColor.addictBlack}) =>
+      TextStyle(
+        fontSize: fontSize,
+        height: height,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppFont.fontBold,
+        color: color,
+        fontStyle: FontStyle.normal,
+      );
 }
