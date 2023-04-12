@@ -14,10 +14,14 @@ class AssetPath {
   static const analyticsSvg = '$_svgPath/analytics.svg';
   static const chatSvg = '$_svgPath/chat.svg';
   static const homeSvg = '$_svgPath/home.svg';
+  static const sendSvg = '$_svgPath/send.svg';
+
   static const userSvg = '$_svgPath/user.svg';
   static const totalTime = '$_imagePath/total-time.png';
   static const facebook = '$_imagePath/facebook.png';
   static const whatsapp = '$_imagePath/whatsapp.png';
   static const slack = '$_imagePath/slack.png';
   static const me = '$_imagePath/me.png';
+  static const person = '$_imagePath/person.png';
+  static const friend = '$_imagePath/friend.png';
 }

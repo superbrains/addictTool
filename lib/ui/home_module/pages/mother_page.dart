@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../provider/page_index_provider.dart';
 import '../widgets/bottom_nav.dart';
 import 'analytics_page.dart';
+import 'chat_page.dart';
 import 'profile_page.dart';
 
 class MotherHomePage extends ConsumerWidget {
@@ -11,7 +12,7 @@ class MotherHomePage extends ConsumerWidget {
 
   static const _body = <Widget>[
     AnalyticsPage(),
-    Scaffold(),
+    ChatPage(),
     Scaffold(),
     ProfilePage(),
   ];
