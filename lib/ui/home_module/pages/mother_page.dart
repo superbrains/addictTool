@@ -13,7 +13,6 @@ class MotherHomePage extends ConsumerWidget {
   static const _body = <Widget>[
     AnalyticsPage(),
     ChatPage(),
-    Scaffold(),
     ProfilePage(),
   ];
 
@@ -24,7 +23,6 @@ class MotherHomePage extends ConsumerWidget {
     return WillPopScope(
       onWillPop: () async {
         if (index > 0) {
-          //ref.read(pageIndexProvider.notifier).communityTab();
           return false;
         }
         return true;

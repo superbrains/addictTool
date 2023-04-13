@@ -1,3 +1,5 @@
+import 'package:addict_tool/ui/extension_methods/context_extension.dart';
+import 'package:addict_tool/ui/home_module/widgets/app_list.dart';
 import 'package:addict_tool/ui/shared/padded_container.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,6 @@ class AnalyticsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(elevation: 0, backgroundColor: context.scaffoldBackgroundColor),
       body: PaddedContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +41,10 @@ class AnalyticsPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          context.showBottomSheet(
+              child: const AppListBottomSheet(), heightFraction: 0.4);
+        },
         child: const Icon(Icons.add),
       ),
     );

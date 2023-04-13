@@ -1,6 +1,18 @@
 part of theme;
 
 class AppTextStyle {
+  static TextStyle fontWeight300(
+          {double fontSize = 16,
+          double height = 23 / 18,
+          Color color = AppColor.addictBlack}) =>
+      TextStyle(
+        fontSize: fontSize,
+        height: height,
+        fontWeight: FontWeight.w300,
+        fontFamily: AppFont.fontLight,
+        color: color,
+        fontStyle: FontStyle.normal,
+      );
   static TextStyle fontWeight400(
           {double fontSize = 16,
           double height = 23 / 18,

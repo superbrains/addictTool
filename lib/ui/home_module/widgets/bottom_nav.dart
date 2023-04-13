@@ -50,16 +50,10 @@ class BottomNavWidget extends ConsumerWidget {
               onTap: () => _onTap(1),
             ),
             _NavItem(
-              title: 'Home',
-              svgPath: AssetPath.homeSvg,
-              selected: currentIndex == 2,
-              onTap: () => _onTap(2),
-            ),
-            _NavItem(
               title: 'Profile',
               svgPath: AssetPath.userSvg,
-              selected: currentIndex == 3,
-              onTap: () => _onTap(3),
+              selected: currentIndex == 2,
+              onTap: () => _onTap(2),
             ),
           ],
         ),

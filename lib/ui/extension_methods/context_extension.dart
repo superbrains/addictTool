@@ -81,6 +81,31 @@ extension BuildContextX on BuildContext {
 
   bool get isSmallScreen => (height / width) < 1.61;
 
+  Future<T?> showBottomSheet<T>(
+      {required Widget child,
+      bool isDismissible = true,
+      double? heightFraction,
+      String title = '',
+      bool noPadding = false}) {
+    return showModalBottomSheet<T>(
+        context: this,
+        isScrollControlled: true,
+        isDismissible: isDismissible,
+        builder: (context) {
+          return Wrap(
+            children: [
+              Container(
+                height: heightFraction != null ? height * heightFraction : null,
+                padding: noPadding
+                    ? null
+                    : const EdgeInsets.fromLTRB(16, 22, 16, 40),
+                child: child,
+              ),
+            ],
+          );
+        });
+  }
+
   Future showPlatformAlertDialog(
       {required String title,
       String? message,
