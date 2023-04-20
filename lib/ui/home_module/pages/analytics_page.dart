@@ -43,7 +43,7 @@ class AnalyticsPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.showBottomSheet(
-              child: const AppListBottomSheet(), heightFraction: 0.4);
+              child: const AppListBottomSheet(), heightFraction: 0.5);
         },
         child: const Icon(Icons.add),
       ),

@@ -29,7 +29,11 @@ class SetTimeOutPage extends HookWidget {
             const SizedBox(height: 22),
             Row(
               children: [
-                Image.asset(app.icon),
+                Image.asset(
+                  app.icon,
+                  height: 22,
+                  width: 22,
+                ),
                 const SizedBox(width: 4),
                 Text(
                   app.app,

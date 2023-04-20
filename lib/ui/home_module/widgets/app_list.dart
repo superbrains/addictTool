@@ -1,6 +1,8 @@
-import 'package:addict_tool/ui/home_module/widgets/app_elaspe_time_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:installed_apps/app_info.dart';
 
+import '../../shared/package_info_service.dart';
 import '../../theme/theme.dart';
 
 class AppListBottomSheet extends StatelessWidget {
@@ -12,16 +14,26 @@ class AppListBottomSheet extends StatelessWidget {
       children: [
         const SizedBox(height: 40),
         Expanded(
-          child: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: 32, crossAxisCount: 4),
-            children: [
-              ...sampleApps.map((e) => _AppColumn(
-                    appItem: e,
-                  ))
-            ],
+          child: Consumer(
+            builder: (BuildContext context, WidgetRef ref, Widget? child) {
+              final socialApps = ref.watch(socialAppsProvider);
+              return socialApps.maybeWhen(
+                  data: (apps) => GridView(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                mainAxisSpacing: 32, crossAxisCount: 4),
+                        children: [
+                          ...apps.map((e) => _AppColumn(
+                                appItem: e,
+                              ))
+                        ],
+                      ),
+                  orElse: () => const Center(
+                        child: CircularProgressIndicator(),
+                      ));
+            },
           ),
-        ),
+        )
       ],
     );
   }
@@ -29,20 +41,23 @@ class AppListBottomSheet extends StatelessWidget {
 
 class _AppColumn extends StatelessWidget {
   const _AppColumn({Key? key, required this.appItem}) : super(key: key);
-  final AppItem appItem;
+  final AppInfo appItem;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          appItem.icon,
-          height: 42,
-          width: 42,
-          fit: BoxFit.cover,
-        ),
+        if (appItem.icon != null)
+          Image.memory(
+            appItem.icon!,
+            height: 42,
+            width: 42,
+            fit: BoxFit.cover,
+          ),
         const SizedBox(height: 8),
         Text(
-          appItem.app,
+          appItem.name ?? '',
+          textAlign: TextAlign.center,
           style: AppTextStyle.fontWeight400(fontSize: 14, color: Colors.black),
         ),
       ],
