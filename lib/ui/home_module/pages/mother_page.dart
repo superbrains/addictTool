@@ -22,6 +22,7 @@ class MotherHomePage extends ConsumerWidget {
     return WillPopScope(
       onWillPop: () async {
         if (index > 0) {
+          ref.read(pageIndexProvider.notifier).analyticsTab();
           return false;
         }
         return true;

@@ -12,13 +12,7 @@ class PageIndexNotifier extends StateNotifier<int> {
     state = index;
   }
 
-  void communityTab() => setPageIndex(0);
-
-  void channelTab() => setPageIndex(1);
-
-  void profileTab() => setPageIndex(2);
-
-  void publicTab() => setPageIndex(3);
+  void analyticsTab() => setPageIndex(0);
 }
 
 final pageIndexProvider =
