@@ -2,8 +2,11 @@ import 'package:addict_tool/ui/extension_methods/context_extension.dart';
 import 'package:addict_tool/ui/shared/app_elevated_button.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:installed_apps/app_info.dart';
 
 import '../pages/set_time_page.dart';
+import '../provider/app_monitor_provider.dart';
 
 class AppItem {
   final String app;
@@ -25,7 +28,7 @@ final sampleApps = [
 
 class AppElapseTimeWidget extends StatelessWidget {
   const AppElapseTimeWidget({Key? key, required this.app}) : super(key: key);
-  final AppItem app;
+  final AppInfo app;
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +42,19 @@ class AppElapseTimeWidget extends StatelessWidget {
           Row(
             children: [
               const Spacer(),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.cancel),
-                  iconSize: 22,
-                  color: const Color(0xff717070))
+              Consumer(
+                builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                  return IconButton(
+                      onPressed: () {
+                        ref
+                            .read(addedPackageNameProvider.notifier)
+                            .remove(app.packageName);
+                      },
+                      icon: const Icon(Icons.cancel),
+                      iconSize: 22,
+                      color: const Color(0xff717070));
+                },
+              )
             ],
           ),
           Padding(
@@ -63,10 +74,11 @@ class AppElapseTimeWidget extends StatelessWidget {
                         const SizedBox(height: 5),
                         Row(
                           children: [
-                            Image.asset(app.icon, height: 21, width: 21),
+                            if (app.icon != null)
+                              Image.memory(app.icon!, height: 21, width: 21),
                             const SizedBox(width: 4),
                             Text(
-                              app.app,
+                              app.name ?? '',
                               style: AppTextStyle.fontWeight400(),
                             ),
                           ],

@@ -3,7 +3,9 @@ import 'package:addict_tool/ui/home_module/widgets/app_list.dart';
 import 'package:addict_tool/ui/shared/padded_container.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../provider/app_monitor_provider.dart';
 import '../widgets/app_elaspe_time_widget.dart';
 
 class AnalyticsPage extends StatelessWidget {
@@ -25,17 +27,25 @@ class AnalyticsPage extends StatelessWidget {
                     color: AppColor.secondaryAddict)),
             const SizedBox(height: 14),
             Image.asset(AssetPath.totalTime, width: double.maxFinite),
-            Expanded(
-                child: ListView(
-              children: [
-                const SizedBox(height: 20),
-                ...sampleApps.map((e) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: AppElapseTimeWidget(
-                        app: e,
-                      ),
-                    ))
-              ],
+            Expanded(child: Consumer(
+              builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                final appsState = ref.watch(addedAppItemsProvider);
+
+                return appsState.maybeWhen(
+                    data: (apps) => ListView(
+                          children: [
+                            const SizedBox(height: 20),
+                            ...apps.map((e) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 20.0),
+                                  child: AppElapseTimeWidget(
+                                    app: e,
+                                  ),
+                                ))
+                          ],
+                        ),
+                    orElse: () =>
+                        const Center(child: CircularProgressIndicator()));
+              },
             ))
           ],
         ),

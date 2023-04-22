@@ -1,9 +1,11 @@
+import 'package:addict_tool/ui/extension_methods/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:installed_apps/app_info.dart';
 
 import '../../shared/package_info_service.dart';
 import '../../theme/theme.dart';
+import '../provider/app_monitor_provider.dart';
 
 class AppListBottomSheet extends StatelessWidget {
   const AppListBottomSheet({Key? key}) : super(key: key);
@@ -23,8 +25,16 @@ class AppListBottomSheet extends StatelessWidget {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 mainAxisSpacing: 32, crossAxisCount: 4),
                         children: [
-                          ...apps.map((e) => _AppColumn(
-                                appItem: e,
+                          ...apps.map((appItem) => InkWell(
+                                onTap: () {
+                                  ref
+                                      .read(addedPackageNameProvider.notifier)
+                                      .add(appItem.packageName);
+                                  context.pop();
+                                },
+                                child: _AppColumn(
+                                  appItem: appItem,
+                                ),
                               ))
                         ],
                       ),

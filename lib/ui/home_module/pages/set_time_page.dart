@@ -5,12 +5,11 @@ import 'package:addict_tool/ui/shared/svg_render_widget.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
-import '../widgets/app_elaspe_time_widget.dart';
+import 'package:installed_apps/app_info.dart';
 
 class SetTimeOutPage extends HookWidget {
   const SetTimeOutPage({Key? key, required this.app}) : super(key: key);
-  final AppItem app;
+  final AppInfo app;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +28,15 @@ class SetTimeOutPage extends HookWidget {
             const SizedBox(height: 22),
             Row(
               children: [
-                Image.asset(
-                  app.icon,
-                  height: 22,
-                  width: 22,
-                ),
+                if (app.icon != null)
+                  Image.memory(
+                    app.icon!,
+                    height: 22,
+                    width: 22,
+                  ),
                 const SizedBox(width: 4),
                 Text(
-                  app.app,
+                  app.name ?? '',
                   style: AppTextStyle.fontWeight400(),
                 ),
               ],
