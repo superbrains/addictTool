@@ -1,4 +1,5 @@
 import 'package:addict_tool/ui/extension_methods/context_extension.dart';
+import 'package:addict_tool/ui/extension_methods/int_extension.dart';
 import 'package:addict_tool/ui/shared/app_elevated_button.dart';
 import 'package:addict_tool/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:installed_apps/app_info.dart';
 
 import '../pages/set_time_page.dart';
 import '../provider/app_monitor_provider.dart';
+import '../provider/app_usage_stat_providet.dart';
 
 class AppItem {
   final String app;
@@ -26,12 +28,13 @@ final sampleApps = [
   AppItem(app: 'Skype', icon: AssetPath.skype),
 ];
 
-class AppElapseTimeWidget extends StatelessWidget {
+class AppElapseTimeWidget extends ConsumerWidget {
   const AppElapseTimeWidget({Key? key, required this.app}) : super(key: key);
   final AppInfo app;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appUsage = ref.watch(appUsageProvider('${app.packageName}'));
     return Container(
       decoration: BoxDecoration(
         color: AppColor.cardBackground,
@@ -96,7 +99,9 @@ class AppElapseTimeWidget extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          '15 mins',
+                          appUsage?.usage != null
+                              ? '${appUsage?.usage.inMinutes.formatMinTime}'
+                              : '0 Min',
                           style: AppTextStyle.fontWeight400(),
                         ),
                       ],

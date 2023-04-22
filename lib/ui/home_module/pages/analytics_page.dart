@@ -30,12 +30,11 @@ class AnalyticsPage extends StatelessWidget {
             Expanded(child: Consumer(
               builder: (BuildContext context, WidgetRef ref, Widget? child) {
                 final appsState = ref.watch(addedAppItemsProvider);
-
                 return appsState.maybeWhen(
                     data: (apps) => ListView(
                           children: [
                             const SizedBox(height: 20),
-                            ...apps.map((e) => Padding(
+                            ...apps.reversed.map((e) => Padding(
                                   padding: const EdgeInsets.only(bottom: 20.0),
                                   child: AppElapseTimeWidget(
                                     app: e,

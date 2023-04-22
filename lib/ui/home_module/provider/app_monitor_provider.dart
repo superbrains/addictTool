@@ -1,4 +1,4 @@
-import 'package:addict_tool/ui/shared/package_info_service.dart';
+import 'package:addict_tool/ui/home_module/provider/social_media_app_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:installed_apps/app_info.dart';
 

@@ -21,7 +21,7 @@ class OnboardingPageView extends HookWidget {
             flex: 2,
           ),
           Expanded(
-            flex: 6,
+            flex: 8,
             child: PageView(
               controller: pageController,
               children: const [

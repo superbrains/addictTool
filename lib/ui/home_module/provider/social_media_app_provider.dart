@@ -35,11 +35,8 @@ class AppInfoService {
     'Flickr',
     'Vine',
     'Google+',
-    'Periscope',
     'Meerkat',
     'Peach',
-    'Mastodon',
-    'Ello',
   ];
 }
 
@@ -51,9 +48,9 @@ final socialAppsProvider = FutureProvider<List<AppInfo>>((ref) async {
   final apps = await ref.watch(appInfoServiceProvider).apps;
   List<AppInfo> socialMediaApps = [];
   for (AppInfo package in apps) {
-    final packageName = package.packageName ?? "";
+    final packageName = package.name ?? "";
     for (String app in AppInfoService.socialMediaApps) {
-      if (packageName.contains(app.toLowerCase())) {
+      if (packageName.toLowerCase().contains(app.toLowerCase())) {
         socialMediaApps.add(package);
       }
     }

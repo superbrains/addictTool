@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:installed_apps/app_info.dart';
 
-import '../../shared/package_info_service.dart';
 import '../../theme/theme.dart';
 import '../provider/app_monitor_provider.dart';
+import '../provider/social_media_app_provider.dart';
 
 class AppListBottomSheet extends StatelessWidget {
   const AppListBottomSheet({Key? key}) : super(key: key);

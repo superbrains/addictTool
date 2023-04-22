@@ -19,7 +19,6 @@ class MotherHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final index = ref.watch(pageIndexProvider);
-
     return WillPopScope(
       onWillPop: () async {
         if (index > 0) {
