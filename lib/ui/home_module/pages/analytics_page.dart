@@ -42,6 +42,7 @@ class AnalyticsPage extends StatelessWidget {
                                 ))
                           ],
                         ),
+                    error: (error, _) => Text('$error'),
                     orElse: () =>
                         const Center(child: CircularProgressIndicator()));
               },
